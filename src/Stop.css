@@ -1,0 +1,32 @@
+button{
+background-color: brown;
+text-align: center;
+border-radius: 10px;
+
+}
+
+.start{
+    background-color: blue;
+   margin: 10px;
+}
+
+.stop{
+    background-color: red;
+}
+.container{
+    background-color: rgb(255, 255, 255);
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+position: absolute;
+left: 600PX;
+top:300px
+
+}
+stop:hover{
+    background-color:aquamarine
+}
+
+.background{
+    background-color: blue;
+}
