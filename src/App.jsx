@@ -1,4 +1,4 @@
-import Stopwatch from '../../Components/Stopwatch'
+import Stopwatch from './Components/Stopwatch'
 
 
 
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <>
-     <Stopwatch/> 
+     <Stopwatch /> 
     </>
   )
 }
