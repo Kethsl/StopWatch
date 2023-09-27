@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
  // We are importing these hooks that way we can use them
- import "../my-react-app/src/Stop.css"
+ import './Stop.css';
 
 
 function Stopwatch() {
