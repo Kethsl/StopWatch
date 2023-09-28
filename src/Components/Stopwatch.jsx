@@ -3,10 +3,10 @@ import React, { useState, useEffect } from "react";
  import './Stop.css';
 
 
-function Stopwatch() {
+function Stopwatch(){
 
     const [time , setTime ] = useState(0) // in this line we created time, we set is to = to 0. This is , that way our clock will start off with 0 and will store time.
-
+    const [splitArr, setSplitArr] = useState([])
     const [isRunning, setIsRunning] = useState(false); // We created is running, And set a boolean in it to check if it is running or not.
 
     useEffect (() => {  //this goes along with line 32 , we are setting up the start and stop. 
@@ -34,31 +34,58 @@ function Stopwatch() {
 
 const reset = ()=> { // this is creating a variable 
     setTime(0);
+    setSplitArr([])
 }
 // we are using lines 22-27 and converting them into strings.
 // pad start links a string to another string. I used pad start that way all of the intervals show up on the screen
 // A tenory operator is used on line 50 in 
 
+const handleSplit = () => {
+   let min = minutes.toString().padStart(2, "0") 
+   let sec = seconds.toString().padStart(2, "0")
+   let mili = milliseconds.toString().padStart(2, "0")
+    
+  const splitTime = `${min}:${sec}:${mili}`
+    setSplitArr([...splitArr,splitTime])
+    console.log(splitArr)
+}
+
+
     return (
       <>
-      <div className="background">
-        <div className="container"> 
-          <p className="time">
   
+        <div className="container"> 
+    
+          <p className="time">
             {hours}:{minutes.toString().padStart(2, "0")}: 
             {seconds.toString().padStart(2, "0")}: 
             {milliseconds.toString().padStart(2, "0")}
           </p>
-            <button className="start"onClick={startAndStop}> 
+          <p className="Lap"> LAP NO.</p>
+          <p className="Split"> SPLIT</p>
+          <hr className="line"></hr>
+          <div className="whole">
+        <ol>
+          {splitArr.map((timeItem, index) => (
+            <li className="List" key={index}> 
+              {timeItem}
+
+            </li>
+          ))}
+        </ol>  
+        </div>
+            <button className="start"onClick={startAndStop}>       
               {isRunning ? "Stop" : "Start"} 
             </button>
-            <button className="stop" onClick={reset}> Reset
-              
+            <button className="stop" onClick={reset}> Reset 
             </button>
+          <button className="split" onClick={handleSplit}>Split</button>   
+            <div>
           </div>
           </div>
+        
     </>
-    )
-}
-
+    );
+    
+          }
 export default Stopwatch
